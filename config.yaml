@@ -1,0 +1,35 @@
+cognite:
+  host: "https://bluefield.cognitedata.com"
+  project: "sa-team"
+  idp_authentication:
+    client_id: ${CLIENT_ID}
+    secret: ${CLIENT_SECRET}
+    scopes: ["https://bluefield.cognitedata.com/.default"]
+    tenant: ${TENANT}
+    token_url: ${TOKEN_URL}
+  extraction-pipeline:
+    external-id: ${PIPELINE_ID} # extractor pipeline from CDF!
+
+logger:
+  console:
+    level: INFO
+  file:
+    path: "debug.log"
+    level: DEBUG
+
+
+frost_cfg:
+  client_id: ${FROST_CLIENT_ID}
+  endpoints:
+    locations: "https://frost.met.no/locations/v0.jsonld"
+    sources: "https://frost.met.no/sources/v0.jsonld?types=SensorSystem&geometry=nearest(POINT(longitude latitude))"
+    available_timeseries: "https://frost.met.no/observations/availableTimeSeries/v0.jsonld?sources=sensorySystemID"
+    observations: "https://frost.met.no/observations/v0.jsonld?sources=insert_sn_id&referencetime=insert_start_date%2Finsert_stop_date&elements=insert_variable&timeresolutions=insert_resolution"
+
+
+timeseries_cfg:
+  id: ${TIMESERIES_ID} # timeseries id from CDF
+  sensory_system_id: ${SENSORY_SYSTEM_ID} # SN id from Frost API
+  variable: ${VARIABLE} # specific variable/ts
+  time_res: ${TIME_RES} # resolution
+  valid_from: "2021-10-01T00:00:00" #from which date/time data points are available must be in ISO8601 format!
