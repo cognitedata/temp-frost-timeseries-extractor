@@ -1,1 +1,1 @@
- 0 */6 * * * /timeseries-extractor/env/extractor.sh > /proc/1/fd/1 2>/proc/1/fd/2
+ 0 */6 * * * /timeseries-extractor/docker-env/extractor.sh > /proc/1/fd/1 2>/proc/1/fd/2
